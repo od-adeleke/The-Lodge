@@ -20,21 +20,6 @@ const PageNav = ({
   const [showCheckout, setShowCheckout]= useState(false)
   const [showGuest, setShowGuest]= useState(false)
 
-  const popupRef= useRef(null)
-
-  useEffect(()=> {
-    const handleClick= (e)=> {
-      if(popupRef.current && !popupRef.current.contains(e.target)) {
-        setShowGuest(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClick)
-    return ()=> {
-      document.removeEventListener('mousedown', handleClick)
-    }
-  }, [])
-
   return (
     <div className="relative flex justify-self-center p-4 rounded-full shadow-2xl">
       <Destination
