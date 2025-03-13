@@ -34,7 +34,22 @@ const ShowCheckIn = ({
       />
       {showCheckin && (
         <div className='absolute flex flex-col bg-white border-none rounded-lg shadow-2xl p-5 gap-4 max-h-100 z-50'>
-          CHECKIN
+          <p>Suggested destination</p>
+          <div className='flex flex-row gap-4'>
+            <BuildingOffice2Icon className='w-8 h-8' />
+            <div>
+              <h2 className='font-bold'>London, United Kingdom</h2>
+              <p>For sights like Buckingham Palace</p>
+            </div>
+          </div>
+
+          <div className='flex flex-row gap-4'>
+            <BuildingOffice2Icon className='w-8 h-8' />
+            <div>
+              <h2 className='font-bold'>London, United Kingdom</h2>
+              <p>For sights like Buckingham Palace</p>
+            </div>
+          </div>
         </div>
       )}
     </div>
