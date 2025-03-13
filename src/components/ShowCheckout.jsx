@@ -1,11 +1,11 @@
 import {useRef, useEffect} from 'react'
 import {BuildingOffice2Icon} from '@heroicons/react/24/outline'
 
-const ShowCheckIn = ({ 
-  checkin, 
-  onHandleCheckin, 
-  showCheckin, 
-  setShowCheckin 
+const ShowCheckout = ({ 
+  checkout, 
+  onHandleCheckout, 
+  showCheckout, 
+  setShowCheckout 
 }) => {
 
   const popupRef= useRef(null)
@@ -13,7 +13,7 @@ const ShowCheckIn = ({
   useEffect(()=> {
     const handleClick= (e)=> {
       if(popupRef.current && !popupRef.current.contains(e.target)) {
-        setShowCheckin(false)
+        setShowCheckout(false)
       }
     }
 
@@ -25,15 +25,15 @@ const ShowCheckIn = ({
 
   return (
     <div className='border-l border-zinc-200 pl-2' ref={popupRef}>
-      <p>Check in</p>
+      <p>Check out</p>
       <input 
         placeholder='Add dates' 
         className='focus:outline-none focus:border-none focus:ring-0 active:border-none'
-        value={checkin} 
-        onChange={e => onHandleCheckin(e.target.value)}
-        onClick={()=> setShowCheckin(true)}
+        value={checkout} 
+        onChange={e => onHandleCheckout(e.target.value)}
+        onClick={()=> setShowCheckout(true)}
       />
-      {showCheckin && (
+      {showCheckout && (
         <div className='absolute flex flex-col bg-white border-none rounded-lg shadow-2xl p-5 gap-4 max-h-100 z-50'>
           <div className='grid grid-cols-3 gap-2'>
             {/* <p>Dates</p> */}
@@ -50,4 +50,4 @@ const ShowCheckIn = ({
   )
 }
 
-export default ShowCheckIn
+export default ShowCheckout

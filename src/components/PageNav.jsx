@@ -1,7 +1,9 @@
 import {useState, useEffect, useRef} from 'react'
 import {MagnifyingGlassIcon} from '@heroicons/react/24/outline'
 import Destination from './Destination'
+import ShowCheckout from './ShowCheckout'
 import ShowCheckIn from './ShowCheckIn'
+import ShowGuest from './ShowGuest'
 
 const PageNav = ({
   destination, 
@@ -19,32 +21,6 @@ const PageNav = ({
   const [showGuest, setShowGuest]= useState(false)
 
   const popupRef= useRef(null)
-
-  useEffect(()=> {
-    const handleClick= (e)=> {
-      if(popupRef.current && !popupRef.current.contains(e.target)) {
-        setShowCheckin(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClick)
-    return ()=> {
-      document.removeEventListener('mousedown', handleClick)
-    }
-  }, [])
-
-  useEffect(()=> {
-    const handleClick= (e)=> {
-      if(popupRef.current && !popupRef.current.contains(e.target)) {
-        setShowCheckout(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClick)
-    return ()=> {
-      document.removeEventListener('mousedown', handleClick)
-    }
-  }, [])
 
   useEffect(()=> {
     const handleClick= (e)=> {
@@ -75,25 +51,20 @@ const PageNav = ({
         setShowCheckin={setShowCheckin}
       />
 
-      <div className="border-l pl-2">
-        <p>Check out</p>
-        <input
-          placeholder="Add dates"
-          className="focus:outline-none focus:border-none focus:ring-0 active:border-none"
-          value={checkout}
-          onChange={(e) => onHandleDestination(e.target.value)}
-        />
-      </div>
+      <ShowCheckout 
+        checkout={checkout}
+        onHandleCheckout={onHandleCheckout}
+        showCheckout={showCheckout}
+        setShowCheckout={setShowCheckout}
+      />
 
-      <div className="border-l pl-2">
-        <p>Who</p>
-        <input
-          placeholder="Add guests"
-          className="focus:outline-none focus:border-none focus:ring-0 active:border-none"
-          value={guest}
-          onChange={(e) => onHandleDestination(e.target.value)}
-        />
-      </div>
+      <ShowGuest
+        guest={guest}
+        onHandleGuest={onHandleGuest}
+        showGuest={showGuest}
+        setShowGuest={setShowGuest}
+      />
+
       <div className="flex flex-row items-center gap-3 bg-red-600 text-white p-4 rounded-full">
         <MagnifyingGlassIcon className="h-8 w-8" />
         {/* Search */}
